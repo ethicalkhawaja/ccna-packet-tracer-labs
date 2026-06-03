@@ -1,0 +1,93 @@
+=================================================
+LAB 1: VLAN + INTER-VLAN ROUTING (ROUTER-ON-A-STICK)
+=================================================
+
+-------------------------
+SWITCH CONFIGURATION (SW1)
+-------------------------
+
+enable
+configure terminal
+hostname SW1
+
+! Create VLANs
+vlan 10
+name Guest
+
+vlan 20
+name Sales
+
+vlan 30
+name IT
+
+! Assign access ports to VLAN 10
+interface range fa0/1-2
+switchport mode access
+switchport access vlan 10
+
+! Assign access ports to VLAN 20
+interface fa0/3
+switchport mode access
+switchport access vlan 20
+
+interface fa0/4
+switchport mode access
+switchport access vlan 30
+
+! Assign access ports to VLAN 30
+interface fa0/5
+switchport mode access
+switchport access vlan 30
+
+! Trunk link to router
+interface g0/1
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30
+
+end
+write memory
+
+
+-------------------------
+ROUTER CONFIGURATION (R1)
+-------------------------
+
+enable
+configure terminal
+hostname R1
+
+! Enable router interface
+interface g0/0
+no shutdown
+
+! VLAN 10
+interface g0/0.1
+encapsulation dot1Q 10
+ip address 192.168.10.254 255.255.255.0
+
+! VLAN 20
+interface g0/0.2
+encapsulation dot1Q 20
+ip address 192.168.20.254 255.255.255.0
+
+! VLAN 30
+interface g0/0.3
+encapsulation dot1Q 30
+ip address 192.168.30.254 255.255.255.0
+
+end
+write memory
+
+
+-------------------------
+VERIFICATION COMMANDS
+-------------------------
+
+show vlan brief
+show interfaces trunk
+show ip interface brief
+
+Ping tests:
+- PC1 → PC2 (same VLAN)
+- PC1 → PC3 (inter-VLAN routing test)
+- PC1 - PC4  (inter-VLAN routing test)
