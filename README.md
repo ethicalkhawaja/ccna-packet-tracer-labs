@@ -8,7 +8,7 @@ The labs cover core networking concepts including VLANs, routing, OSPF, DHCP, NA
 
 - 01 VLANs & Inter-VLAN Routing
 - 02 Static Routing
-- 03 OSPF single area
+- 03 OSPF Single Area
 - 04 DHCP & NAT
 - 05 ACL Security
 - 06 Enterprise Network Design
