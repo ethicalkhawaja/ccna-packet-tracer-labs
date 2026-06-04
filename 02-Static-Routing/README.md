@@ -1,52 +1,54 @@
-Static Routing Lab
+# 🌐 Static Routing Lab
 
-"Topology" (topology.png)
+A Cisco Packet Tracer lab demonstrating static routing between three routers and three LANs.
 
-Project Overview
+## 📷 Network Topology
 
-This project demonstrates Static Routing between three routers connecting three separate LANs. The objective is to provide end-to-end connectivity between all networks using manually configured static routes.
+![Topology](topology.png)
 
-Network Topology
+---
 
-LAN Networks
+## 🎯 Objective
 
-LAN| Network| Default Gateway
-LAN 1| 192.168.1.0/24| 192.168.1.254
-LAN 2| 192.168.2.0/24| 192.168.2.254
-LAN 3| 192.168.3.0/24| 192.168.3.254
+Configure static routes to enable communication between all networks.
 
-WAN Links
+### Networks
 
-Connection| Network
-R1 ↔ R2| 10.0.12.0/30
-R2 ↔ R3| 10.0.23.0/30
+| Network |          Gateway |
+|----------|----------|
+| 192.168.1.0/24 | 192.168.1.254 |
+| 192.168.2.0/24 | 192.168.2.254 |
+| 192.168.3.0/24 | 192.168.3.254 |
 
-Devices Used
+### WAN Links
 
-- 3 Cisco Routers
-- 3 Cisco Switches
-- 6 PCs
+| Link | Network |
+|--------|---------|
+| R1 ↔ R2 | 10.0.12.0/30 |
+| R2 ↔ R3 | 10.0.23.0/30 |
+
+---
+
+## 🛠 Technologies Used
+
 - Cisco Packet Tracer
-
-Skills Demonstrated
-
+- IPv4 Addressing
 - Static Routing
-- IP Addressing
-- Subnetting
 - Router Configuration
 - Network Troubleshooting
-- End-to-End Connectivity Testing
 
-Verification Commands
+--
+```
+---
+
+## ✅ Verification
 
 show ip route
 show ip interface brief
 ping <destination-ip>
+```
+---
 
-Results
+## 👨‍💻 Author
 
-All LANs can successfully communicate with each other through manually configured static routes.
-
-Author
-
-ethicalkhawaja
+** ethicalkhawaja **
