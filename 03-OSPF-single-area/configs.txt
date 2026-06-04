@@ -1,0 +1,41 @@
+OSPF Configuration
+
+R1
+
+router ospf 1
+ router-id 1.1.1.1
+
+interface g0/1
+ ip ospf 1 area 0
+
+interface g0/0
+ ip ospf 1 area 0
+
+R2
+
+router ospf 1
+ router-id 2.2.2.2
+
+interface g0/1
+ ip ospf 1 area 0
+
+interface g0/2
+ ip ospf 1 area 0
+
+R3
+
+router ospf 2
+ router-id 3.3.3.3
+
+interface g0/0
+ ip ospf 2 area 0
+
+interface g0/2
+ ip ospf 2 area 0
+
+Verification
+
+show ip ospf neighbor
+show ip route
+show ip protocols
+show ip ospf interface brief
