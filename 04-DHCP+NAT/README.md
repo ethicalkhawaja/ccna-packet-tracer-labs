@@ -1,4 +1,4 @@
-# 🌐 DHCP and NAT/PAT Lab
+# 🌐 DHCP + NAT/PAT Lab
 
 A Cisco Packet Tracer lab demonstrating DHCP and NAT/PAT configuration.
 
