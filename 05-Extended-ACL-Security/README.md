@@ -90,12 +90,6 @@ ip access-list extended OFFICE
 
 show access-lists
 ```
-
-### Verify Interfaces
-
-show ip interface brief
-```
-
 ### Test Connectivity
 
 ping 192.168.100.10
