@@ -1,4 +1,4 @@
-# CCNA Packet Tracer Lab 1: VLAN + Inter-VLAN Routing
+# VLAN + Inter-VLAN Routing
 
 ## 📌 Overview
 This lab demonstrates VLAN creation and Inter-VLAN routing using Cisco Packet Tracer. It simulates a small enterprise network using router-on-a-stick configuration.
