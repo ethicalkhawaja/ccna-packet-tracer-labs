@@ -20,6 +20,8 @@ This lab demonstrates VLAN creation and Inter-VLAN routing using Cisco Packet Tr
 - 3 VLANs (10, 20, 30)
 - Multiple PCs connected to different VLANs
 
+- topology.png
+
 ---
 
 ## 🧾 VLAN Details
