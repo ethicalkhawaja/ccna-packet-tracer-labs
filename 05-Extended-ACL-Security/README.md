@@ -12,6 +12,9 @@ The lab showcases how network administrators can enforce least-privilege access 
 
 ## Network Topology
 
+![topology](topology.png)
+
+
 ### VLAN Structure
 
 | VLAN | Department | Network |
