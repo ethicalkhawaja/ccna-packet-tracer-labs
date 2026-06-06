@@ -1,0 +1,53 @@
+hostname R1
+
+! Server Network
+
+interface GigabitEthernet0/0
+description Connection to Server Network
+ip address 192.168.100.254 255.255.255.0
+no shutdown
+
+! HR VLAN
+
+interface GigabitEthernet0/1.1
+encapsulation dot1Q 10
+ip address 192.168.1.254 255.255.255.0
+
+! Home VLAN
+
+interface GigabitEthernet0/1.3
+encapsulation dot1Q 30
+ip address 192.168.3.254 255.255.255.0
+
+
+! Physical Interface
+
+interface GigabitEthernet0/1
+no shutdown
+
+! Sales VLAN
+
+interface GigabitEthernet0/2.1
+encapsulation dot1Q 20
+ip address 192.168.2.254 255.255.255.0
+
+! Extended ACL
+
+ip access-list extended OFFICE
+
+Allow SalesPC2 access to Server
+permit ip host 192.168.2.2 host 192.168.100.10
+
+Allow HR VLAN access to Server
+permit ip 192.168.1.0 0.0.0.255 host 192.168.100.10
+
+Allow Home-PC1 access to Server
+permit ip host 192.168.3.1 host 192.168.100.10
+
+! Apply ACL toward Server Network
+
+interface GigabitEthernet0/0
+ip access-group OFFICE out
+
+end
+write memory
