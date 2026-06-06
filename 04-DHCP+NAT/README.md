@@ -56,6 +56,7 @@ Configure DHCP to automatically assign IP addresses to clients and configure NAT
 # 📸 Verification
 
  DHCP and NAT Verification
+ 
  Successful Ping Test
 
 
