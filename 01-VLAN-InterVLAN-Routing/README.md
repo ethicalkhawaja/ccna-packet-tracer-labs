@@ -18,9 +18,9 @@ This lab demonstrates VLAN creation and Inter-VLAN routing using Cisco Packet Tr
 - 1 Router (R1)
 - 1 Switch (SW1)
 - 3 VLANs (10, 20, 30)
-- Multiple PCs connected to different VLANs
+- Multiple PCs connected to different
+- ![Topology][topology.png]
 
-- topology.png
 
 ---
 
