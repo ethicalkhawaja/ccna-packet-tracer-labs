@@ -1,0 +1,142 @@
+=========================================
+ENTERPRISE NETWORK LAB CONFIGURATION
+=========================================
+
+=========================================
+ENT-R (Enterprise Router)
+=========================================
+
+hostname ENT-R
+
+! DHCP Configuration
+
+ip dhcp excluded-address 192.168.10.1 192.168.10.10
+ip dhcp excluded-address 192.168.20.1 192.168.20.10
+ip dhcp excluded-address 192.168.199.1 192.168.199.10
+
+ip dhcp pool VLAN10
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.254
+
+ip dhcp pool VLAN20
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.254
+
+ip dhcp pool VLAN199
+ network 192.168.199.0 255.255.255.0
+ default-router 192.168.199.254
+
+! Router-on-a-Stick
+
+interface GigabitEthernet0/1
+ no shutdown
+
+interface GigabitEthernet0/1.1
+ encapsulation dot1Q 10
+ ip address 192.168.10.254 255.255.255.0
+ ip nat inside
+
+interface GigabitEthernet0/1.2
+ encapsulation dot1Q 20
+ ip address 192.168.20.254 255.255.255.0
+ ip nat inside
+
+interface GigabitEthernet0/1.199
+ encapsulation dot1Q 199
+ ip address 192.168.199.254 255.255.255.0
+ ip nat inside
+
+! WAN
+
+interface Serial0/0/0
+ ip address 203.0.113.1 255.255.255.252
+ ip nat outside
+ no shutdown
+
+! PAT (NAT Overload)
+
+access-list 1 permit 192.168.10.0 0.0.0.255
+access-list 1 permit 192.168.20.0 0.0.0.255
+access-list 1 permit 192.168.199.0 0.0.0.255
+
+ip nat inside source list 1 interface Serial0/0/0 overload
+
+! Default Route
+
+ip route 0.0.0.0 0.0.0.0 203.0.113.2
+
+
+=========================================
+SW1 (Access Switch)
+=========================================
+
+hostname SW1
+
+! VLANs
+
+vlan 10
+ name SALES
+
+vlan 20
+ name IT
+
+vlan 199
+ name MANAGEMENT
+
+! Trunk Port
+
+interface GigabitEthernet0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,199
+
+! Access Ports
+
+interface FastEthernet0/1
+ switchport mode access
+ switchport access vlan 10
+
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 10
+
+interface FastEthernet0/3
+ switchport mode access
+ switchport access vlan 20
+
+interface FastEthernet0/4
+ switchport mode access
+ switchport access vlan 20
+
+! Management VLAN
+
+interface Vlan199
+ ip address 192.168.199.2 255.255.255.0
+ no shutdown
+
+ip default-gateway 192.168.199.254
+
+! SSH Configuration
+
+ip domain-name admin
+
+username admin secret ccna123
+
+crypto key generate rsa
+
+ip ssh version 2
+
+line vty 0 5
+ exec-timeout 5
+ login local
+ transport input ssh
+
+
+=========================================
+ISP-R (ISP Router)
+=========================================
+
+hostname ISP-R
+
+interface Serial0/0/0
+ ip address 203.0.113.2 255.255.255.252
+ no shutdown
