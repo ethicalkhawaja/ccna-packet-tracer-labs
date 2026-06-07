@@ -136,7 +136,6 @@ Management IP:
 
 Configuration:
 
-```cisco
 hostname SW1
 
 ip domain-name admin
@@ -160,10 +159,7 @@ show users
 ```
 
 Example:
-
-```bash
-ssh -l admin 192.168.199.2
-```
+ssh -l admin 192.168.199.
 ```
 
 ## Troubleshooting & Lessons Learned
@@ -177,7 +173,6 @@ While implementing PAT, translations were not being created even though:
 
 PAT statistics showed:
 
-```text
 Hits: 0
 Translations: 0
 ```
@@ -190,14 +185,12 @@ Because Router-on-a-Stick uses subinterfaces for Layer 3 forwarding, NAT never p
 
 Incorrect:
 
-```cisco
 interface GigabitEthernet0/1
  ip nat inside
 ```
 
-Correct:
+Correct
 
-```cisco
 interface GigabitEthernet0/1.1
  ip nat inside
 
