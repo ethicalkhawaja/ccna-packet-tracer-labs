@@ -1,0 +1,52 @@
+========================================
+SW1 CONFIGURATION
+
+enable
+configure terminal
+
+vlan 10
+name SALES
+
+vlan 20
+name USERS
+
+interface range fa0/4 - 7
+switchport mode trunk
+channel-group 1 mode active
+
+interface port-channel 1
+switchport mode trunk
+
+end
+write memory
+
+========================================
+SW2 CONFIGURATION
+
+enable
+configure terminal
+
+vlan 10
+name SALES
+
+vlan 20
+name USERS
+
+interface range fa0/3 - 6
+switchport mode trunk
+channel-group 2 mode active
+
+interface port-channel 2
+switchport mode trunk
+
+end
+write memory
+
+========================================
+VERIFICATION COMMANDS
+
+show vlan brief
+
+show interfaces trunk
+
+show etherchannel summary
