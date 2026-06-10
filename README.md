@@ -12,7 +12,7 @@ The labs cover core networking concepts including VLANs, routing, OSPF, DHCP, NA
 - 04 DHCP & NAT
 - 05 ACL Security
 - 06 Enterprise Network Design
-- Etherchannel-LACP
+- 07-Etherchannel-LACP
 
 ## Tools Used
 - Cisco Packet Tracer
