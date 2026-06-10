@@ -20,7 +20,7 @@ This project simulates a small enterprise network built in Cisco Packet Tracer. 
 
 ## Network Topology
 
-![Topology](topology.png.png)
+![Topology](topology.png)
 
 
 ## Network Design
